@@ -1,10 +1,13 @@
 let jogador, vencedor =  null;
 let jogadorSelecionado = document.getElementById('jogadorSelecionado');
 let vencedorSelecionado = document.getElementById('vencedorSelecionado');
- let quadrado  = document.getElementsByClassName('quadrado');
+ let quadrados = document.getElementsByClassName('quadrado');
 trocaJogador("X");
 
 function escolherQuadrado(id){
+    if ( vencedor != null){
+        return
+    }
 
 let quadrado = document.getElementById(id);
 if ( quadrado.innerHTML != '-'){
@@ -90,9 +93,9 @@ function trocaJogador(valor){
      }
 
       function mudaCorQuadrado( Quadrado1, Quadrado2, Quadrado3){
-        Quadrado1.style.color = 'green';
-        Quadrado2.style.color = 'green';
-        Quadrado3.style.color = 'green';
+        Quadrado1.style.color = '#0f0';
+        Quadrado2.style.color = '#0f0';
+        Quadrado3.style.color = '#0f0';
       }
  }
   function checasequencia( Quadrado1, Quadrado2, Quadrado3){
@@ -101,4 +104,15 @@ function trocaJogador(valor){
           igual = true
       }
        return igual;
+  }
+  function reset(){
+      vencedor = null;
+      vencedorSelecionado = ' ';
+      for(let i =1; i <= 9; i++){
+          let quadrado = document.getElementById(i);
+          quadrado.style.color = '#eee'
+          quadrado.innerHTML =' '
+
+      }
+      trocaJogador("X")
   }
